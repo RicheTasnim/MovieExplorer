@@ -1,3 +1,4 @@
+// src/components/MovieCard.jsx
 export default function MovieCard({ movie, onSelect }) {
   const { name, image, rating, premiered } = movie;
   const year = premiered ? premiered.split("-")[0] : "N/A";
@@ -21,7 +22,7 @@ export default function MovieCard({ movie, onSelect }) {
         </div>
         <button
           onClick={() => onSelect(movie)}
-          className="w-full bg-red-600 hover:bg-red-700 text-white font-medium py-2 rounded-lg transition"
+          className="w-full bg-red-600 hover:bg-red-700 text-white font-medium py-2 rounded-lg transition cursor-pointer"
         >
           See Details
         </button>

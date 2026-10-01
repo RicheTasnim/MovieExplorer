@@ -20,7 +20,7 @@ export default function MovieListing() {
     setLoading(true);
     try {
       const data = await fetchShows();
-      setMovies(data.slice(0, 24)); // Display top 24 shows
+      setMovies(data.slice(0, 24)); // 24 shows
     } catch (err) {
       console.error(err);
     } finally {
@@ -51,17 +51,20 @@ export default function MovieListing() {
 
       <main className="flex-grow max-w-7xl w-full mx-auto p-6">
         {/* Search Bar */}
-        <form onSubmit={handleSearch} className="mb-8 flex gap-3">
+        <form
+          onSubmit={handleSearch}
+          className="mb-8 flex flex-col sm:flex-row gap-3 w-full"
+        >
           <input
             type="text"
             placeholder="🔍 Search for a movie or show title..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="flex-grow px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-red-500"
+            className="w-full sm:flex-1 px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-red-500 transition"
           />
           <button
             type="submit"
-            className="bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-lg font-medium transition"
+            className="w-full sm:w-auto bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-lg font-medium transition cursor-pointer whitespace-nowrap"
           >
             Search
           </button>

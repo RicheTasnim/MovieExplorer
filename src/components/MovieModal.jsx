@@ -1,18 +1,24 @@
+// src/components/MovieModal.jsx
 export default function MovieModal({ movie, onClose }) {
   if (!movie) return null;
 
   const { name, image, summary, rating, premiered, genres, language } = movie;
-  // Clean HTML tags from TVMaze summary
   const cleanSummary = summary
     ? summary.replace(/<[^>]*>?/gm, "")
     : "No description available.";
 
   return (
-    <div className="fixed inset-0 bg-black/75 backdrop-blur-sm flex justify-center items-center p-4 z-50">
-      <div className="bg-gray-800 rounded-2xl max-w-2xl w-full p-6 relative border border-gray-700 max-h-[90vh] overflow-y-auto">
+    <div
+      onClick={onClose}
+      className="fixed inset-0 bg-black/75 backdrop-blur-sm flex justify-center items-center p-4 z-50 cursor-pointer"
+    >
+      <div
+        onClick={(e) => e.stopPropagation()}
+        className="bg-gray-800 rounded-2xl max-w-2xl w-full p-6 relative border border-gray-700 max-h-[90vh] overflow-y-auto cursor-default"
+      >
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 text-gray-400 hover:text-white text-2xl font-bold"
+          className="absolute top-4 right-4 text-gray-400 hover:text-white text-2xl font-bold cursor-pointer"
         >
           ✕
         </button>
